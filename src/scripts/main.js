@@ -13,7 +13,7 @@ APIManager = {
   getLyrics(trackId) {  // getLyrics API call
     return fetchJsonp(`${url}/track.lyrics.get?format=jsonp&track_id=${trackId}&apikey=4cc92c98b858367876ca9869d3895f76`)
       .then(res => res.json())
-      .then(res2 => jsonIterator(res2 ))
+      .then(res2 => jsonIterator(res2))
   }
 
 }
@@ -31,11 +31,11 @@ const getInputValue = () => {
   document.querySelector("#lyricsContainer").innerHTML = `<h3>Details: </h3>`
 
   let inputValue = document.getElementById("lyricSearch").value;
-  if (inputValue === ''){
+  if (inputValue === '') {
     alert("Please Enter Lyric")
   } else {
-  APIManager.getArtist(inputValue);
-}
+    APIManager.getArtist(inputValue);
+  }
 };
 
 search.addEventListener("click", getInputValue)
@@ -84,9 +84,9 @@ domPrinter = (lyricsOrTracksArray, arrayIdentifier) => {
 
       const getMyLyrics = () => {
         let getMyLyricsByTrackID = fetchLyricsByTrack
-         APIManager.getLyrics(getMyLyricsByTrackID);
+        APIManager.getLyrics(getMyLyricsByTrackID);
       }
-      
+
 
       //Creating the DOM elements
       let songsResultsContainer = document.querySelector("#songsContainer")
@@ -166,7 +166,7 @@ domPrinter = (lyricsOrTracksArray, arrayIdentifier) => {
 
     // event listeners to the 'get lyrics' button
     lyricsCardBodySongsLyricsButton.addEventListener("click", function () {
-      lyricsPrinter(lyricsResultsContainer.value);
+      lyricsPrinter();
     })
 
 
@@ -183,20 +183,16 @@ domPrinter = (lyricsOrTracksArray, arrayIdentifier) => {
   }
 }
 
-const lyricsPrinter=()=>{
+const lyricsPrinter = () => {
 
-let mywindow = window.open('', 'PRINT', 'height=400,width=600');
+  let printLyricsWindow = window.open('', 'PRINT', 'height=400,width=600');
 
-  mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-  mywindow.document.write('</head><body >');
-  mywindow.document.write('<h1>' + document.title  + '</h1>');
-  mywindow.document.write(document.getElementById("lyricsContainer").innerHTML);
-  mywindow.document.write('</body></html>');
+  printLyricsWindow.document.write('<html><head><title>' + document.title + '</title>');
+  printLyricsWindow.document.write('</head><body >');
+  printLyricsWindow.document.write('<h1>' + document.title + '</h1>');
+  printLyricsWindow.document.write(document.getElementById("lyricsContainer").innerHTML);
+  printLyricsWindow.document.write('</body></html>');
 
-  mywindow.print();
-  mywindow.close();
-
-
-
-
+  printLyricsWindow.print();
+  printLyricsWindow.close();
 }

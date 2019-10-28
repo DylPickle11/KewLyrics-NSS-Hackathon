@@ -5,39 +5,35 @@
   font-weight: bold;
 }
 
-.wrapper > * {
+.wrapper>* {
   padding: 10px;
   flex: 1 100%;
 }
-
 
 main {
   background: deepskyblue;
   display: flex;
   justify-content: space-evenly;
   flex: 1 100%;
-
 }
 
 .card {
   margin-top: .5em;
   opacity: 200%%;
-
 }
 
 section {
   text-align: left;
   opacity: 100%;
-
   /* width: 100%; */
-
 }
 
-
 body {
-  background-image: url(/styles/bg.jpg); 
-  background-size: 100%;
+  background-image: url(/styles/bg.jpg);
+  height: 900px;
+  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
   padding: 2em;
   font-family: 'Staatliches', cursive;
 }
